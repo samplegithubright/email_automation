@@ -35,7 +35,7 @@ function ThankYouContent() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '8px' }}>
+        <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '8px', flexWrap: 'wrap' }}>
           <Link href="/" className="btn btn-secondary" style={{ flex: 1 }}>
             Capture Form
           </Link>
@@ -50,7 +50,7 @@ function ThankYouContent() {
 
 export default function ThankYou() {
   return (
-    <main className="container" style={{ padding: '80px 24px', minHeight: 'calc(100vh - 200px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <main className="container page-main">
       <Suspense fallback={
         <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
           <span className="spinner" style={{ marginBottom: '12px' }}></span>

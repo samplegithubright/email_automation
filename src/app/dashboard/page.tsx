@@ -138,10 +138,10 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="container" style={{ padding: '40px 24px', minHeight: 'calc(100vh - 200px)' }}>
+    <main className="container page-main" style={{ justifyContent: 'flex-start' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h1 style={{ fontSize: '32px', fontWeight: '800', letterSpacing: '-0.5px' }}>
+          <h1 className="dashboard-heading">
             Analytics <span className="text-gradient">Dashboard</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
@@ -204,10 +204,10 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: selectedLead ? '1fr 380px' : '1fr', gap: '30px', transition: 'all 0.3s ease' }}>
+          <div className={`dashboard-layout ${selectedLead ? 'has-selected' : ''}`}>
             
             <div className="panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
+              <div className="filter-row">
                 <input
                   type="text"
                   placeholder="Search leads by name, email, requirement..."
@@ -251,7 +251,8 @@ export default function Dashboard() {
                         <tr 
                           key={lead._id} 
                           onClick={() => setSelectedLead(lead)}
-                          style={{ cursor: 'pointer', background: selectedLead?._id === lead._id ? 'rgba(255,255,255,0.03)' : 'transparent' }}
+                          className={selectedLead?._id === lead._id ? 'selected' : ''}
+                          style={{ cursor: 'pointer' }}
                         >
                           <td>
                             <div style={{ fontWeight: '700', color: 'var(--text-primary)' }}>{lead.name}</div>
@@ -315,8 +316,11 @@ export default function Dashboard() {
             </div>
 
             {selectedLead && (
-              <div className="panel animate-slide-up" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px', borderLeft: '3px solid var(--color-primary)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <>
+                <div className="drawer-backdrop" onClick={() => setSelectedLead(null)}></div>
+                <div className="panel lead-detail-panel animate-slide-up" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px', borderLeft: '3px solid var(--color-primary)' }}>
+                  <div className="drawer-handle" />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <h3 style={{ fontSize: '18px', fontWeight: '700' }}>Lead Profile</h3>
                   <button 
                     onClick={() => setSelectedLead(null)} 
@@ -413,7 +417,7 @@ export default function Dashboard() {
                   🗑 Delete Lead Profile
                 </button>
               </div>
-            )}
+            </>)}
           </div>
         </div>
       )}

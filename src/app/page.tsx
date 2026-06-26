@@ -55,11 +55,11 @@ export default function Home() {
   };
 
   return (
-    <main className="container" style={{ padding: '60px 24px', minHeight: 'calc(100vh - 200px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <main className="container page-main">
       <div className="animate-slide-up" style={{ maxWidth: '640px', margin: '0 auto', width: '100%' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <span className="badge badge-category" style={{ marginBottom: '12px' }}>Lead Generation</span>
-          <h1 style={{ fontSize: '38px', fontWeight: '800', marginBottom: '16px', letterSpacing: '-1px' }}>
+          <h1 className="hero-heading">
             Request a <span className="text-gradient">Personalized Solution</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '16px', maxWidth: '480px', margin: '0 auto' }}>
@@ -87,7 +87,7 @@ export default function Home() {
                 <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '15px', lineHeight: '1.4' }}>
                   Since you are running locally without SMTP credentials, an Ethereal mock email was generated. Open it to test email open & link click tracking!
                 </p>
-                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <a href={capturedLead.emailPreviewUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '10px 18px', fontSize: '13px' }}>
                     ✉ View Mock Email
                   </a>
@@ -130,7 +130,7 @@ export default function Home() {
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="form-grid">
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email Address *</label>
                 <input
