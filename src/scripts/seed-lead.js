@@ -1,6 +1,17 @@
+const path = require('path');
+const { loadEnvConfig } = require('@next/env');
+
+// Load environment variables from .env.local
+loadEnvConfig(path.join(__dirname, '../../'));
+
 const mongoose = require('mongoose');
 
-const MONGODB_URI = "mongodb+srv://chandan:5UZKaJYsuW96682d@cluster0.im8vmoe.mongodb.net/?appName=Cluster0";
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  console.error('Error: MONGODB_URI is not defined. Please check your .env.local file.');
+  process.exit(1);
+}
 
 const LeadSchema = new mongoose.Schema({
   name: { type: String, required: true },
